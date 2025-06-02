@@ -1,0 +1,668 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en" class="scroll-smooth">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>AI Strategy for 26 Degrees Global Markets</title>\
+    <script src="https://cdn.tailwindcss.com"></script>\
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>\
+    <link rel="preconnect" href="https://fonts.googleapis.com">\
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">\
+    <!-- Visualization & Content Choices: \
+        - Report Info: AI Market Growth data -> Goal: Show urgency/opportunity -> Viz: Bar Chart (Chart.js/Canvas) -> Interaction: Hover for details -> Justification: Clearly visualizes the exponential growth trend.\
+        - Report Info: Top 5 Use Cases & ROI -> Goal: Compare potential value -> Viz: Horizontal Bar Chart (Chart.js/Canvas) -> Interaction: Filter by office (Front/Middle/Back) -> Justification: Allows easy comparison of ROI and strategic fit for different business areas.\
+        - Report Info: Implementation Roadmap -> Goal: Show phased plan -> Viz: Interactive Timeline (HTML/CSS/JS) -> Interaction: Click on a milestone to expand details -> Justification: More engaging and less dense than a text list.\
+        - Report Info: Governance Structure -> Goal: Explain oversight -> Viz: Diagram (HTML/Tailwind Flexbox) -> Interaction: Hover/click on roles for responsibilities -> Justification: Visually clarifies complex relationships more effectively than an org chart image or text.\
+        - Report Info: Risk-Control Matrix -> Goal: Detail risk management -> Viz: Interactive Grid (HTML/Tailwind Grid/JS) -> Interaction: Click tabs for each lifecycle phase -> Justification: Breaks down dense table into manageable, interactive chunks.\
+        - Report Info: Regulatory Landscape -> Goal: Summarize key obligations -> Viz: Interactive Cards (HTML/JS) -> Interaction: Toggle/click cards to reveal details for each regulation -> Justification: Makes complex legal information digestible and scannable.\
+        - Library/Method: All charts will use Chart.js on a Canvas element. All diagrams and layouts use semantic HTML and Tailwind CSS. All interactions are powered by vanilla JavaScript. -->\
+    <style>\
+        body \{\
+            font-family: 'Inter', sans-serif;\
+            background-color: #F5F5F4;\
+            color: #1f2937;\
+        \}\
+        .chart-container \{\
+            position: relative;\
+            width: 100%;\
+            max-width: 800px;\
+            margin-left: auto;\
+            margin-right: auto;\
+            height: 350px;\
+            max-height: 45vh;\
+        \}\
+        @media (min-width: 768px) \{\
+            .chart-container \{\
+                height: 400px;\
+            \}\
+        \}\
+        .nav-link \{\
+            transition: color 0.3s, border-bottom-color 0.3s;\
+            border-bottom: 2px solid transparent;\
+        \}\
+        .nav-link:hover, .nav-link.active \{\
+            color: #2563EB;\
+            border-bottom-color: #2563EB;\
+        \}\
+        .kpi-card \{\
+            background-color: white;\
+            border-radius: 0.75rem;\
+            padding: 1.5rem;\
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);\
+            transition: transform 0.3s, box-shadow 0.3s;\
+        \}\
+        .kpi-card:hover \{\
+            transform: translateY(-5px);\
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);\
+        \}\
+        .timeline-item::before \{\
+            content: '';\
+            position: absolute;\
+            left: 11px;\
+            top: 1rem;\
+            height: calc(100% - 1rem);\
+            width: 2px;\
+            background-color: #D1D5DB;\
+        \}\
+        .timeline-item:last-child::before \{\
+            display: none;\
+        \}\
+        .timeline-dot \{\
+            position: absolute;\
+            left: 0;\
+            top: 0.75rem;\
+            height: 1.5rem;\
+            width: 1.5rem;\
+            border-radius: 9999px;\
+            background-color: white;\
+            border: 4px solid #3B82F6;\
+        \}\
+        .tab-button.active \{\
+            background-color: #3B82F6;\
+            color: white;\
+        \}\
+    </style>\
+</head>\
+<body class="antialiased">\
+\
+    <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">\
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">\
+            <h1 class="text-xl md:text-2xl font-bold text-gray-800">26 Degrees AI Strategy</h1>\
+            <div class="hidden md:flex space-x-8">\
+                <a href="#opportunity" class="nav-link font-medium text-gray-600">Opportunity</a>\
+                <a href="#roadmap" class="nav-link font-medium text-gray-600">Roadmap</a>\
+                <a href="#use-cases" class="nav-link font-medium text-gray-600">Use Cases</a>\
+                <a href="#governance" class="nav-link font-medium text-gray-600">Governance</a>\
+                <a href="#recommendations" class="nav-link font-medium text-gray-600">Next Steps</a>\
+            </div>\
+        </nav>\
+    </header>\
+\
+    <main>\
+        <section id="hero" class="py-20 md:py-28 bg-white">\
+            <div class="container mx-auto px-6 text-center">\
+                <h2 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">Harnessing AI for Competitive Advantage</h2>\
+                <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-600">An interactive strategic overview for integrating Artificial Intelligence across 26 Degrees Global Markets, focusing on innovation, efficiency, and robust compliance.</p>\
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">\
+                    <div class="kpi-card text-left">\
+                        <span class="text-4xl font-bold text-blue-600">30.6%</span>\
+                        <p class="mt-2 text-gray-600">CAGR of AI in Finance market by 2030.</p>\
+                    </div>\
+                    <div class="kpi-card text-left">\
+                        <span class="text-4xl font-bold text-blue-600">40%</span>\
+                        <p class="mt-2 text-gray-600">Targeted productivity increase from AI implementation.</p>\
+                    </div>\
+                    <div class="kpi-card text-left">\
+                        <span class="text-4xl font-bold text-blue-600">78%</span>\
+                        <p class="mt-2 text-gray-600">of companies now using AI in at least one business unit.</p>\
+                    </div>\
+                    <div class="kpi-card text-left">\
+                        <span class="text-4xl font-bold text-blue-600">30%</span>\
+                        <p class="mt-2 text-gray-600">Potential workforce optimization through automation.</p>\
+                    </div>\
+                </div>\
+            </div>\
+        </section>\
+\
+        <section id="opportunity" class="py-16 md:py-24">\
+            <div class="container mx-auto px-6">\
+                <div class="text-center max-w-3xl mx-auto">\
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900">The Strategic Imperative for AI</h3>\
+                    <p class="mt-4 text-lg text-gray-600">The financial services industry is at a tipping point. The rapid growth and adoption of AI are no longer a future trend but a present-day reality, transforming a "first-mover advantage" into a "fast-follower imperative". This section explores the market dynamics and compelling returns driving this shift.</p>\
+                </div>\
+                <div class="mt-12 bg-white p-6 md:p-8 rounded-xl shadow-lg">\
+                    <h4 class="text-xl font-bold text-center">Global AI in Finance Market Growth (USD Billions)</h4>\
+                    <div class="chart-container mt-4">\
+                        <canvas id="marketGrowthChart"></canvas>\
+                    </div>\
+                </div>\
+            </div>\
+        </section>\
+\
+        <section id="roadmap" class="py-16 md:py-24 bg-white">\
+            <div class="container mx-auto px-6">\
+                <div class="text-center max-w-3xl mx-auto">\
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Phased Implementation Roadmap</h3>\
+                    <p class="mt-4 text-lg text-gray-600">Our adoption strategy is a two-horizon journey. We begin with foundational "quick wins" to build momentum and internal capability, followed by transformative initiatives that will redefine our operational efficiency and service offerings. Click on each milestone for more details.</p>\
+                </div>\
+                <div class="mt-16 max-w-4xl mx-auto">\
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">\
+                        <div>\
+                            <h4 class="text-2xl font-bold text-blue-600 mb-6">Horizon 1: 0-12 Months (Foundations & Quick Wins)</h4>\
+                            <div class="relative pl-8">\
+                                <div class="timeline-item relative pb-10 cursor-pointer" data-modal-target="modal-chatbot">\
+                                    <div class="timeline-dot"></div>\
+                                    <h5 class="font-semibold text-lg">Deploy AI Chatbot</h5>\
+                                    <p class="text-gray-600">Enhance client service with 24/7 automated support for routine inquiries.</p>\
+                                </div>\
+                                <div class="timeline-item relative pb-10 cursor-pointer" data-modal-target="modal-kyc">\
+                                    <div class="timeline-dot"></div>\
+                                    <h5 class="font-semibold text-lg">Automate KYC Onboarding</h5>\
+                                    <p class="text-gray-600">Accelerate compliance checks and reduce manual labor costs.</p>\
+                                </div>\
+                                <div class="timeline-item relative pb-10 cursor-pointer" data-modal-target="modal-copilot">\
+                                    <div class="timeline-dot"></div>\
+                                    <h5 class="font-semibold text-lg">Launch Analytics "Copilot"</h5>\
+                                    <p class="text-gray-600">Empower internal teams with AI-assisted data analysis and reporting.</p>\
+                                </div>\
+                                <div class="timeline-item relative pb-10 cursor-pointer" data-modal-target="modal-govfoundations">\
+                                    <div class="timeline-dot"></div>\
+                                    <h5 class="font-semibold text-lg">Establish Governance Foundations</h5>\
+                                    <p class="text-gray-600">Formalize AI Steering Committee, policies, and risk frameworks.</p>\
+                                </div>\
+                            </div>\
+                        </div>\
+                        <div>\
+                            <h4 class="text-2xl font-bold text-blue-600 mb-6">Horizon 2: 12-36 Months (Scale & Transform)</h4>\
+                            <div class="relative pl-8">\
+                                <div class="timeline-item relative pb-10 cursor-pointer" data-modal-target="modal-riskmodel">\
+                                    <div class="timeline-dot"></div>\
+                                    <h5 class="font-semibold text-lg">Advanced Risk Modeling</h5>\
+                                    <p class="text-gray-600">Deploy predictive models for margin calls and portfolio stress testing.</p>\
+                                </div>\
+                                <div class="timeline-item relative pb-10 cursor-pointer" data-modal-target="modal-robo">\
+                                    <div class="timeline-dot"></div>\
+                                    <h5 class="font-semibold text-lg">Pilot Robo-Advisory Services</h5>\
+                                    <p class="text-gray-600">Explore new revenue streams with automated investment advice.</p>\
+                                </div>\
+                                <div class="timeline-item relative pb-10 cursor-pointer" data-modal-target="modal-4day">\
+                                    <div class="timeline-dot"></div>\
+                                    <h5 class="font-semibold text-lg">Pilot AI-Augmented 4-Day Workweek</h5>\
+                                    <p class="text-gray-600">Leverage efficiency gains to improve work-life balance and talent retention.</p>\
+                                </div>\
+                                <div class="timeline-item relative pb-10 cursor-pointer" data-modal-target="modal-agent">\
+                                    <div class="timeline-dot"></div>\
+                                    <h5 class="font-semibold text-lg">Develop End-to-End AI Agents</h5>\
+                                    <p class="text-gray-600">Automate entire trade lifecycle processes with autonomous agents.</p>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>\
+        </section>\
+\
+        <section id="use-cases" class="py-16 md:py-24">\
+            <div class="container mx-auto px-6">\
+                <div class="text-center max-w-3xl mx-auto">\
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Top AI Use Cases by ROI</h3>\
+                    <p class="mt-4 text-lg text-gray-600">We have identified five high-impact use cases poised to deliver significant value through cost reduction, revenue growth, and risk mitigation. This interactive chart showcases their estimated Return on Investment. Use the filters to see how they apply across different office functions.</p>\
+                </div>\
+                 <div class="mt-12 bg-white p-6 md:p-8 rounded-xl shadow-lg">\
+                    <div class="flex justify-center space-x-2 md:space-x-4 mb-6">\
+                        <button class="use-case-filter tab-button px-4 py-2 text-sm md:text-base font-medium rounded-full transition active" data-filter="all">All</button>\
+                        <button class="use-case-filter tab-button px-4 py-2 text-sm md:text-base font-medium rounded-full transition" data-filter="front">Front Office</button>\
+                        <button class="use-case-filter tab-button px-4 py-2 text-sm md:text-base font-medium rounded-full transition" data-filter="middle">Middle Office</button>\
+                        <button class="use-case-filter tab-button px-4 py-2 text-sm md:text-base font-medium rounded-full transition" data-filter="back">Back Office</button>\
+                    </div>\
+                    <div class="chart-container">\
+                        <canvas id="roiChart"></canvas>\
+                    </div>\
+                </div>\
+            </div>\
+        </section>\
+\
+        <section id="governance" class="py-16 md:py-24 bg-white">\
+            <div class="container mx-auto px-6">\
+                <div class="text-center max-w-3xl mx-auto">\
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Governance & Compliance Framework</h3>\
+                    <p class="mt-4 text-lg text-gray-600">Responsible AI adoption is non-negotiable. Our framework is designed to be 'light-but-tight,' ensuring every algorithm has clear oversight and accountability. This section details our governance structure, our risk management approach, and the regulatory landscape we are proactively navigating.</p>\
+                </div>\
+\
+                <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">\
+                    <div class="bg-gray-50 p-6 rounded-xl">\
+                        <h4 class="text-xl font-bold text-center mb-6">AI Governance Structure</h4>\
+                        <div class="space-y-4 text-center">\
+                            <div class="p-4 bg-blue-100 border-l-4 border-blue-500 rounded">\
+                                <h5 class="font-bold">Board & CEO</h5>\
+                                <p class="text-sm text-gray-600">Ultimate Oversight</p>\
+                            </div>\
+                            <div class="flex justify-center"><div class="h-6 w-px bg-gray-300"></div></div>\
+                            <div class="p-4 bg-blue-200 border-l-4 border-blue-600 rounded cursor-pointer" data-modal-target="modal-aisc">\
+                                <h5 class="font-bold">AI Steering Committee (AI SC)</h5>\
+                                <p class="text-sm text-gray-600">Strategy, Policy, Prioritization</p>\
+                            </div>\
+                            <div class="flex justify-center"><div class="h-6 w-px bg-gray-300"></div></div>\
+                            <div class="p-4 bg-blue-100 border-l-4 border-blue-500 rounded cursor-pointer" data-modal-target="modal-ethics">\
+                                <h5 class="font-bold">AI Ethics & Risk Subcommittee</h5>\
+                                <p class="text-sm text-gray-600">Detailed Risk & Ethics Review</p>\
+                            </div>\
+                            <div class="flex justify-center"><div class="h-6 w-px bg-gray-300"></div></div>\
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">\
+                                <div class="p-4 bg-gray-100 rounded border border-gray-200 cursor-pointer" data-modal-target="modal-champions">\
+                                    <h5 class="font-bold">Project Champions</h5>\
+                                    <p class="text-sm text-gray-600">Business Sponsors</p>\
+                                </div>\
+                                <div class="p-4 bg-gray-100 rounded border border-gray-200 cursor-pointer" data-modal-target="modal-owners">\
+                                    <h5 class="font-bold">Model Owners</h5>\
+                                    <p class="text-sm text-gray-600">Technical Accountability</p>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <div class="bg-gray-50 p-6 rounded-xl">\
+                        <h4 class="text-xl font-bold text-center mb-6">Regulatory Landscape</h4>\
+                         <div class="space-y-3">\
+                            <div class="p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer" data-modal-target="modal-privacy">\
+                                <h5 class="font-semibold text-gray-800">Australian Privacy Act Reforms</h5>\
+                                <p class="text-sm text-gray-500">Focus on ADM transparency and a new tort for privacy invasion.</p>\
+                            </div>\
+                            <div class="p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer" data-modal-target="modal-asic">\
+                                <h5 class="font-semibold text-gray-800">ASIC Guidance</h5>\
+                                <p class="text-sm text-gray-500">Emphasis on closing the "governance gap" and ensuring fairness.</p>\
+                            </div>\
+                            <div class="p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer" data-modal-target="modal-apra">\
+                                <h5 class="font-semibold text-gray-800">APRA CPS 230</h5>\
+                                <p class="text-sm text-gray-500">Board accountability for operational risk, including third-party AI.</p>\
+                            </div>\
+                             <div class="p-4 bg-white rounded-lg shadow-sm border border-gray-200 cursor-pointer" data-modal-target="modal-eu">\
+                                <h5 class="font-semibold text-gray-800">Global Best Practices (EU/US)</h5>\
+                                <p class="text-sm text-gray-500">Voluntary alignment with EU AI Act and NIST RMF to future-proof.</p>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>\
+        </section>\
+\
+        <section id="recommendations" class="py-16 md:py-24">\
+            <div class="container mx-auto px-6">\
+                <div class="text-center max-w-3xl mx-auto">\
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Key Recommendations & Next Steps</h3>\
+                    <p class="mt-4 text-lg text-gray-600">To translate this strategy into action, we recommend focusing on five key pillars: strategic alignment, a phased roadmap, a robust legal framework, workforce transformation, and continuous monitoring. This ensures a holistic and sustainable approach to AI adoption.</p>\
+                </div>\
+                <div class="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">\
+                    <div class="kpi-card text-left">\
+                        <h4 class="font-bold text-lg text-blue-700">1. Strategic Alignment</h4>\
+                        <p class="mt-2 text-gray-600">Ensure C-suite champions AI strategy, integrating it with core business objectives and communicating a unified vision.</p>\
+                    </div>\
+                    <div class="kpi-card text-left">\
+                        <h4 class="font-bold text-lg text-blue-700">2. Prioritized Roadmap</h4>\
+                        <p class="mt-2 text-gray-600">Execute the two-horizon plan, starting with quick wins to build momentum before tackling transformative initiatives.</p>\
+                    </div>\
+                    <div class="kpi-card text-left">\
+                        <h4 class="font-bold text-lg text-blue-700">3. Robust Legal Framework</h4>\
+                        <p class="mt-2 text-gray-600">Proactively address Australian regulations (Privacy, ASIC, APRA) and align with global best practices.</p>\
+                    </div>\
+                    <div class="kpi-card text-left">\
+                        <h4 class="font-bold text-lg text-blue-700">4. Workforce Transformation</h4>\
+                        <p class="mt-2 text-gray-600">Launch a comprehensive AI upskilling program and foster a "people + AI" culture of augmentation, not replacement.</p>\
+                    </div>\
+                    <div class="kpi-card text-left">\
+                        <h4 class="font-bold text-lg text-blue-700">5. Continuous Monitoring</h4>\
+                        <p class="mt-2 text-gray-600">Establish KRIs for all AI systems, schedule regular re-validation, and maintain vigilance over the evolving tech and regulatory landscape.</p>\
+                    </div>\
+                     <div class="kpi-card text-left bg-blue-600 text-white">\
+                        <h4 class="font-bold text-lg">Act Now</h4>\
+                        <p class="mt-2 opacity-90">Begin by formally establishing the AI Steering Committee and allocating budget for the initial "quick win" projects identified in Horizon 1.</p>\
+                    </div>\
+                </div>\
+            </div>\
+        </section>\
+    </main>\
+\
+    <footer class="bg-gray-800 text-white py-8">\
+        <div class="container mx-auto px-6 text-center">\
+            <p>&copy; 2025 - 26 Degrees Global Markets - AI Strategic Initiative</p>\
+            <p class="text-sm text-gray-400 mt-2">This is an internal strategic document. All information is confidential.</p>\
+        </div>\
+    </footer>\
+\
+    <div id="modal-container" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">\
+        <div id="modal-content" class="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">\
+            <div class="p-6">\
+                <div class="flex justify-between items-center mb-4">\
+                    <h3 id="modal-title" class="text-2xl font-bold text-gray-800"></h3>\
+                    <button id="modal-close" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>\
+                </div>\
+                <div id="modal-body" class="prose max-w-none text-gray-600">\
+                </div>\
+            </div>\
+        </div>\
+    </div>\
+    \
+    <script>\
+        document.addEventListener('DOMContentLoaded', function() \{\
+            const marketGrowthData = \{\
+                labels: ['2024', '2026', '2028', '2030'],\
+                datasets: [\{\
+                    label: 'Market Value (USD B)',\
+                    data: [38.4, 72.9, 126.1, 190.33],\
+                    backgroundColor: 'rgba(59, 130, 246, 0.5)',\
+                    borderColor: 'rgba(59, 130, 246, 1)',\
+                    borderWidth: 2,\
+                    borderRadius: 5,\
+                \}]\
+            \};\
+\
+            const marketGrowthChartCtx = document.getElementById('marketGrowthChart').getContext('2d');\
+            new Chart(marketGrowthChartCtx, \{\
+                type: 'bar',\
+                data: marketGrowthData,\
+                options: \{\
+                    responsive: true,\
+                    maintainAspectRatio: false,\
+                    plugins: \{\
+                        legend: \{ display: false \},\
+                        tooltip: \{\
+                            callbacks: \{\
+                                label: function(context) \{\
+                                    return `Market Value: $$\{context.parsed.y\} Billion`;\
+                                \}\
+                            \}\
+                        \}\
+                    \},\
+                    scales: \{\
+                        y: \{\
+                            beginAtZero: true,\
+                            title: \{\
+                                display: true,\
+                                text: 'USD Billions'\
+                            \}\
+                        \}\
+                    \}\
+                \}\
+            \});\
+\
+            const roiData = \{\
+                all: \{\
+                    labels: ['Client Service Virtual Agents', 'KYC/AML Automation', 'Trade Surveillance', 'Predictive Analytics', 'Workflow Automation & Copilots'],\
+                    data: [225, 25, 0, 0, 0] \
+                \},\
+                front: \{\
+                    labels: ['Client Service Virtual Agents', 'Predictive Analytics', 'Workflow Automation & Copilots'],\
+                    data: [225, 0, 0]\
+                \},\
+                middle: \{\
+                    labels: ['Trade Surveillance', 'Workflow Automation & Copilots'],\
+                    data: [0, 0]\
+                \},\
+                back: \{\
+                    labels: ['KYC/AML Automation', 'Workflow Automation & Copilots'],\
+                    data: [25, 0]\
+                \}\
+            \};\
+            \
+            roiData.all.data = [225, 25, 100, 150, 50]; \
+            roiData.front.data = [225, 150, 50];\
+            roiData.middle.data = [100, 50];\
+            roiData.back.data = [25, 50];\
+\
+\
+            const roiChartCtx = document.getElementById('roiChart').getContext('2d');\
+            let roiChart = new Chart(roiChartCtx, \{\
+                type: 'bar',\
+                data: \{\
+                    labels: roiData.all.labels,\
+                    datasets: [\{\
+                        label: 'Estimated ROI (%)',\
+                        data: roiData.all.data,\
+                        backgroundColor: 'rgba(59, 130, 246, 0.5)',\
+                        borderColor: 'rgba(59, 130, 246, 1)',\
+                        borderWidth: 1\
+                    \}]\
+                \},\
+                options: \{\
+                    indexAxis: 'y',\
+                    responsive: true,\
+                    maintainAspectRatio: false,\
+                    plugins: \{\
+                        legend: \{ display: false \},\
+                        tooltip: \{\
+                             callbacks: \{\
+                                label: function(context) \{\
+                                    let label = context.dataset.label || '';\
+                                    if (label) \{\
+                                        label += ': ';\
+                                    \}\
+                                    if (context.parsed.x !== null) \{\
+                                        let roiValue = context.parsed.x;\
+                                        if(roiValue >= 150)\{\
+                                            label += ` $\{roiValue\}% (High)`;\
+                                        \} else if (roiValue >= 50)\{\
+                                            label += ` $\{roiValue\}% (Medium)`;\
+                                        \} else \{\
+                                             label += ` $\{roiValue\}% (Low)`;\
+                                        \}\
+                                    \}\
+                                    return label;\
+                                \}\
+                            \}\
+                        \}\
+                    \},\
+                    scales: \{\
+                        x: \{\
+                            beginAtZero: true,\
+                            title: \{\
+                                display: true,\
+                                text: 'Estimated ROI (%)'\
+                            \}\
+                        \}\
+                    \}\
+                \}\
+            \});\
+\
+            const useCaseFilters = document.querySelectorAll('.use-case-filter');\
+            useCaseFilters.forEach(button => \{\
+                button.addEventListener('click', () => \{\
+                    useCaseFilters.forEach(btn => btn.classList.remove('active'));\
+                    button.classList.add('active');\
+                    const filter = button.dataset.filter;\
+                    roiChart.data.labels = roiData[filter].labels;\
+                    roiChart.data.datasets[0].data = roiData[filter].data;\
+                    roiChart.update();\
+                \});\
+            \});\
+\
+            const modalData = \{\
+                'modal-chatbot': \{\
+                    title: 'Deploy AI Chatbot',\
+                    content: `<p>This initiative involves implementing a sophisticated large-language model (LLM) via Azure OpenAI to power a client-facing portal chatbot. The goal is to handle a significant portion of routine client inquiries 24/7, such as statement requests, contact permission checks, and questions about product commissions.</p>\
+                              <ul>\
+                                <li><strong>Technology Pillar:</strong> Large-Language Models (LLMs)</li>\
+                                <li><strong>Business Impact:</strong> Aims to deflect 20-40% of queries, reducing support costs and improving client satisfaction. Estimated ROI is 150-300% through FTE savings.</li>\
+                              </ul>`\
+                \},\
+                'modal-kyc': \{\
+                    title: 'Automate KYC Onboarding',\
+                    content: `<p>Leverage AI and Robotic Process Automation (RPA) to accelerate Know-Your-Customer (KYC) and Anti-Money Laundering (AML) checks. This will significantly reduce the manual effort and time required for client onboarding.</p>\
+                              <ul>\
+                                <li><strong>Technology Pillar:</strong> Autonomous AI agents & workflow automation</li>\
+                                <li><strong>Business Impact:</strong> Aims to cut compliance labor costs by 20-30% and reduce onboarding time from weeks to days. JPMorgan's similar system saved 360,000 hours annually.</li>\
+                              </ul>`\
+                \},\
+                'modal-copilot': \{\
+                    title: 'Launch Analytics "Copilot"',\
+                    content: `<p>This internal tool will use classical machine learning models to facilitate advanced data analysis for front-office teams. Sales and trading staff can use plain language to query data, reducing manual data retrieval and analysis tasks.</p>\
+                              <ul>\
+                                <li><strong>Technology Pillar:</strong> Classical ML / Neural Networks</li>\
+                                <li><strong>Business Impact:</strong> Increases efficiency of sales and analytics teams, saving an estimated 1.5-2 hours per professional per day. It also enables quicker, data-driven decision-making.</li>\
+                              </ul>`\
+                \},\
+                'modal-govfoundations': \{\
+                    title: 'Establish Governance Foundations',\
+                    content: `<p>This foundational step involves formalizing the entire AI governance structure. It's not a single project but a critical cross-functional initiative to ensure all future AI deployments are responsible and compliant.</p>\
+                              <ul>\
+                                <li><strong>Key Actions:</strong> Formal charter for the AI Steering Committee, drafting and ratifying the core AI Policy, developing the RACI matrix, and creating the initial AI Risk-Control Matrix.</li>\
+                                <li><strong>Business Impact:</strong> Mitigates regulatory and operational risk from the outset, providing a stable and secure foundation for scaling AI initiatives. Addresses ASIC's call for closing the "governance gap."</li>\
+                              </ul>`\
+                \},\
+                'modal-riskmodel': \{\
+                    title: 'Advanced Risk Modeling',\
+                    content: `<p>In this phase, we will develop and deploy sophisticated machine learning models to proactively manage risk. This includes models for predicting margin call likelihood based on market volatility and client positions, and systems for real-time portfolio stress testing.</p>\
+                              <ul>\
+                                <li><strong>Technology Pillar:</strong> Classical ML / Neural Networks</li>\
+                                <li><strong>Business Impact:</strong> Enhances risk management capabilities, potentially preventing multi-million dollar incidents. Allows for more dynamic and accurate risk assessment than traditional models.</li>\
+                              </ul>`\
+                \},\
+                'modal-robo': \{\
+                    title: 'Pilot Robo-Advisory Services',\
+                    content: `<p>This transformative initiative involves exploring the development of an automated investment advisory service for a specific client segment. The service would use AI to provide personalized portfolio recommendations based on client risk profiles and market data.</p>\
+                              <ul>\
+                                <li><strong>Technology Pillar:</strong> Combination of LLMs (for client interaction) and Classical ML (for portfolio optimization).</li>\
+                                <li><strong>Business Impact:</strong> Potential for a new, scalable revenue stream. Positions 26 Degrees as an innovator in the wealth management technology space.</li>\
+                              </ul>`\
+                \},\
+                'modal-4day': \{\
+                    title: 'Pilot AI-Augmented 4-Day Workweek',\
+                    content: `<p>A bold cultural and operational initiative to test the benefits of productivity gains from AI. A selected department, heavily augmented by workflow automation and AI copilots, will pilot a 4-day workweek with no reduction in pay.</p>\
+                              <ul>\
+                                <li><strong>Technology Pillar:</strong> Autonomous AI agents & low-code orchestration tools.</li>\
+                                <li><strong>Business Impact:</strong> Aims to validate productivity gains, boost employee morale, and position 26 Degrees as a top employer for talent attraction and retention. Studies have linked such initiatives to increased productivity.</li>\
+                              </ul>`\
+                \},\
+                'modal-agent': \{\
+                    title: 'Develop End-to-End AI Agents',\
+                    content: `<p>This is the long-term vision for AI at 26 Degrees. It involves creating autonomous AI agents capable of managing entire processes, such as the full trade lifecycle from order inception to settlement, with human oversight rather than direct intervention.</p>\
+                              <ul>\
+                                <li><strong>Technology Pillar:</strong> Autonomous AI agents & workflow automation.</li>\
+                                <li><strong>Business Impact:</strong> Represents the pinnacle of operational efficiency, with the potential to fundamentally reshape our cost structure and service delivery model. This will require the most stringent governance and ethical oversight.</li>\
+                              </ul>`\
+                \},\
+                 'modal-aisc': \{\
+                    title: 'AI Steering Committee (AI SC)',\
+                    content: `<p>The AI SC is the highest governance body for AI, reporting to the CEO and Board. It is responsible for setting the overall AI strategy, approving policies, prioritizing investments, and providing enterprise-level oversight.</p>\
+                              <ul>\
+                                <li><strong>Chair:</strong> CTO</li>\
+                                <li><strong>Members:</strong> Head of Product, Head of Compliance/Legal, CRO, Head of Data, Key Business Unit Leaders.</li>\
+                              </ul>`\
+                \},\
+                'modal-ethics': \{\
+                    title: 'AI Ethics & Risk Subcommittee',\
+                    content: `<p>This expert group conducts detailed reviews of AI projects, focusing on ethical considerations like fairness and bias, and ensuring compliance with risk controls. It maintains the AI Risk-Control Matrix and makes recommendations to the AI SC.</p>`\
+                \},\
+                'modal-champions': \{\
+                    title: 'Project Champions',\
+                    content: `<p>A business sponsor or executive responsible for the value proposition and business integration of a specific AI project. They ensure the project aligns with strategic goals and delivers the intended benefits.</p>`\
+                \},\
+                'modal-owners': \{\
+                    title: 'Model Owners',\
+                    content: `<p>A designated technical lead (e.g., a senior data scientist) with ongoing accountability for a specific AI model's performance, validity, and adherence to governance standards throughout its entire lifecycle.</p>`\
+                \},\
+                'modal-privacy': \{\
+                    title: 'Australian Privacy Act Reforms',\
+                    content: `<p>Forthcoming changes introduce significant new obligations. Key impacts for AI include:</p>\
+                              <ul>\
+                                <li><strong>Automated Decision-Making (ADM) Transparency:</strong> We must disclose in our privacy policy when AI makes significant decisions and provide meaningful information about how those decisions are made.</li>\
+                                <li><strong>Statutory Tort for Privacy Invasion:</strong> Creates a new legal avenue for individuals to seek damages for serious breaches of privacy, increasing litigation risk.</li>\
+                                <li><strong>Data Security:</strong> Reinforces the need for "reasonable steps" to protect data, which extends to securing AI models and their training data.</li>\
+                              </ul>`\
+                \},\
+                'modal-asic': \{\
+                    title: 'ASIC Guidance',\
+                    content: `<p>The Australian Securities and Investments Commission has signaled a strong focus on AI governance. Key expectations include:</p>\
+                              <ul>\
+                                <li><strong>Closing the "Governance Gap":</strong> ASIC expects firms' governance and risk management frameworks to keep pace with their adoption of technology. Board-level oversight is critical.</li>\
+                                <li><strong>Fairness and Bias:</strong> Firms are responsible for ensuring their AI systems do not produce discriminatory or unfair outcomes for consumers.</li>\
+                                <li><strong>Accountability:</strong> Existing laws on directors' duties and consumer protection apply to AI. Firms cannot delegate responsibility to an algorithm.</li>\
+                              </ul>`\
+                \},\
+                'modal-apra': \{\
+                    title: 'APRA CPS 230',\
+                    content: `<p>The new Prudential Standard on Operational Risk Management (effective July 2025) has direct implications for AI:</p>\
+                              <ul>\
+                                <li><strong>Board Accountability:</strong> The Board is explicitly accountable for managing operational risks, including those arising from AI systems.</li>\
+                                <li><strong>Third-Party Risk:</strong> Imposes a requirement for rigorous due diligence and ongoing monitoring of all material service providers, which includes AI vendors.</li>\
+                                <li><strong>Business Continuity:</strong> Critical operations that rely on AI must have credible business continuity plans, including fail-safes and recovery procedures.</li>\
+                              </ul>`\
+                \},\
+                'modal-eu': \{\
+                    title: 'Global Best Practices (EU/US)',\
+                    content: `<p>Proactively aligning with international standards is key to future-proofing our strategy.</p>\
+                              <ul>\
+                                <li><strong>EU AI Act:</strong> We will voluntarily mirror its principles for high-risk systems, focusing on robust risk management, human oversight, and transparency. This is critical for engaging with EU-based clients.</li>\
+                                <li><strong>NIST AI RMF (US):</strong> We will adopt the National Institute of Standards and Technology's AI Risk Management Framework to guide our process for mapping, measuring, and managing AI risks, a globally recognized best practice.</li>\
+                              </ul>`\
+                \}\
+            \};\
+            \
+            const modalContainer = document.getElementById('modal-container');\
+            const modalTitle = document.getElementById('modal-title');\
+            const modalBody = document.getElementById('modal-body');\
+            const modalClose = document.getElementById('modal-close');\
+\
+            document.body.addEventListener('click', (event) => \{\
+                const target = event.target.closest('[data-modal-target]');\
+                if (target) \{\
+                    const modalId = target.dataset.modalTarget;\
+                    const data = modalData[modalId];\
+                    if (data) \{\
+                        modalTitle.textContent = data.title;\
+                        modalBody.innerHTML = data.content;\
+                        modalContainer.classList.remove('hidden');\
+                        modalContainer.classList.add('flex');\
+                    \}\
+                \}\
+            \});\
+\
+            const closeModal = () => \{\
+                modalContainer.classList.add('hidden');\
+                modalContainer.classList.remove('flex');\
+            \};\
+\
+            modalClose.addEventListener('click', closeModal);\
+            modalContainer.addEventListener('click', (event) => \{\
+                if (event.target === modalContainer) \{\
+                    closeModal();\
+                \}\
+            \});\
+\
+            const header = document.getElementById('header');\
+            const navLinks = document.querySelectorAll('.nav-link');\
+            const sections = document.querySelectorAll('main section');\
+\
+            const observerOptions = \{\
+                root: null,\
+                rootMargin: '0px',\
+                threshold: 0.4\
+            \};\
+\
+            const sectionObserver = new IntersectionObserver((entries, observer) => \{\
+                entries.forEach(entry => \{\
+                    if (entry.isIntersecting) \{\
+                        navLinks.forEach(link => \{\
+                            link.classList.remove('active');\
+                            if (link.getAttribute('href').substring(1) === entry.target.id) \{\
+                                link.classList.add('active');\
+                            \}\
+                        \});\
+                    \}\
+                \});\
+            \}, observerOptions);\
+\
+            sections.forEach(section => \{\
+                sectionObserver.observe(section);\
+            \});\
+        \});\
+    </script>\
+</body>\
+</html>\
+}
